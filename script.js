@@ -4,6 +4,7 @@ const Imagecontain = document.getElementById("img");
 const searchButton = document.getElementById("search-button");
 const searchInput = document.getElementById("search-input");
 const apiUrl = "https://anshwadhwa.pythonanywhere.com/api/search/";
+const Pagetitle = document.getElementById("pgt");
 
 let performSearch = () => {
     const query = searchInput.value;
@@ -13,6 +14,7 @@ let performSearch = () => {
     }
 
     const url = `${apiUrl}${query}`;
+    Pagetitle.textContent = `${query} - Keepitshort`; // Set the page title
 
     fetch(url)
         .then(response => response.json())

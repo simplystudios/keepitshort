@@ -5,7 +5,7 @@ const imageGallery = document.getElementById("image-gallery");
 const previousButton = document.getElementById("previous-button");
 const nextButton = document.getElementById("next-button");
 const pagenum = document.getElementById("page")
-
+const Pagetitle = document.getElementById("pgt");
 let currentPage = 1;
 pagenum.innerHTML = currentPage
 const imagesPerPage = 20; // Number of images to display per page
@@ -18,6 +18,7 @@ let performSearch = () => {
     }
 
     const url = `${apiUrl}${query}&mediatype=image`;
+    Pagetitle.textContent = `${query} - Keepitshort`; // Set the page title
 
     fetch(url)
         .then(response => response.json())
