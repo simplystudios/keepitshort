@@ -1,6 +1,6 @@
 const Container = document.getElementById("search-results");
-const Titlecontain = document.getElementById("title")
-const Imagecontain = document.getElementById("img")
+const Titlecontain = document.getElementById("title");
+const Imagecontain = document.getElementById("img");
 const searchButton = document.getElementById("search-button");
 const searchInput = document.getElementById("search-input");
 const apiUrl = "https://anshwadhwa.pythonanywhere.com/api/search/";
@@ -31,4 +31,13 @@ let performSearch = () => {
         });
 };
 
+// Function to handle search on Enter key press
+let handleKeyPress = event => {
+    if (event.keyCode === 13 || event.which === 13) {
+        performSearch();
+    }
+};
+
+// Add event listeners
 searchButton.addEventListener("click", performSearch);
+searchInput.addEventListener("keypress", handleKeyPress);

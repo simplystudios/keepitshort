@@ -62,5 +62,11 @@ const modifyImageUrl = (url, size) => {
     const modifiedUrl = `${url.substring(0, url.lastIndexOf('/') + 1)}${size}px-${filename}`;
     return modifiedUrl;
 };
+let handleKeyPress = event => {
+    if (event.keyCode === 13 || event.which === 13) {
+        performSearch();
+    }
+};
 
 searchButton.addEventListener("click", performSearch);
+searchInput.addEventListener("keypress", handleKeyPress);
