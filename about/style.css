@@ -120,3 +120,28 @@ a{
 .list-item {
   margin-bottom: 10px;
 }
+.underlinebtn{
+    padding: 10px 20px;
+    margin-left: 10px;
+    background-color: rgb(233, 233, 5);
+    color: rgb(71, 66, 66);
+    border-radius: 10px;
+    position: relative;
+}
+.underlinebtn::before{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: #0074D9;
+  transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+@media (hover: hover) and (pointer: fine) {
+  .underlinebtn:hover::before{
+    left: 0;
+    right: auto;
+    width: 100%;
+  }
+}

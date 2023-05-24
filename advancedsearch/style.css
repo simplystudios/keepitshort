@@ -121,3 +121,6 @@ a{
 .list-item {
   margin-bottom: 10px;
 }
+p.center {
+  white-space: pre-line;
+}

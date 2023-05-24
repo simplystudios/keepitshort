@@ -2,6 +2,7 @@ const Container = document.getElementById("search-results");
 const searchButton = document.getElementById("search-button");
 const searchInput = document.getElementById("search-input");
 const apiUrl = "https://en.wikipedia.org/w/rest.php/v1/search/page?q=";
+const Pagetitle = document.getElementById("pgt");
 
 let performSearch = () => {
     const query = searchInput.value;
@@ -11,6 +12,7 @@ let performSearch = () => {
     }
 
     const url = `${apiUrl}${query}`;
+    Pagetitle.textContent = `${query} - Keepitshort`; // Set the page title
 
     fetch(url)
         .then(response => response.json())
@@ -26,12 +28,12 @@ let performSearch = () => {
                         listItem.classList.add("list-item");
 
                         const title = document.createElement("h3");
-                        title.classList.add("center")
+                        title.classList.add("center");
                         title.textContent = page.title;
 
                         const excerpt = document.createElement("p");
-                        excerpt.classList.add("center")
-                        excerpt.textContent = page.excerpt;
+                        excerpt.classList.add("center");
+                        excerpt.innerHTML = page.excerpt.replace(/<span[^>]*>(.*?)<\/span>/gi, "$1");
 
                         const image = document.createElement("img");
                         image.src = page.thumbnail ? modifyImageUrl(page.thumbnail.url, 330, 150) : "";
@@ -56,11 +58,9 @@ let performSearch = () => {
 
 // Function to modify the image URL to the desired size
 const modifyImageUrl = (url, size) => {
-  const filename = url.substring(url.lastIndexOf('/') + 1);
-  const modifiedUrl = `${url.substring(0, url.lastIndexOf('/') + 1)}${size}px-${filename}`;
-  return modifiedUrl;
+    const filename = url.substring(url.lastIndexOf('/') + 1);
+    const modifiedUrl = `${url.substring(0, url.lastIndexOf('/') + 1)}${size}px-${filename}`;
+    return modifiedUrl;
 };
-
-
 
 searchButton.addEventListener("click", performSearch);
