@@ -124,3 +124,16 @@ a{
 p.center {
   white-space: pre-line;
 }
+.duckduckgo{
+  background-color: #56564f;
+  color: rgb(200, 190, 190);
+  margin: 15px;
+  padding: 10px;
+  border-radius: 5px;
+}
+.wikipedia{
+  background-color: #211f1f;
+}
+.searchr{
+  background-color: #020000;
+}
