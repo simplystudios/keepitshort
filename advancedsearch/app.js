@@ -1,11 +1,14 @@
 const duckDuckGoApiUrl = "https://api.duckduckgo.com/?format=json&q=";
 const searchEngineApiUrl = "https://search-engine-api.p.rapidapi.com/api/Search/";
-
+const pagenum = document.getElementById("page")
+const previousButton = document.getElementById("previous-button");
+const nextButton = document.getElementById("next-button");
 const Container = document.getElementById("search-results");
 const searchButton = document.getElementById("search-button");
 const searchInput = document.getElementById("search-input");
 const Pagetitle = document.getElementById("pgt");
-
+let currentPage = 1;
+pagenum.innerHTML = currentPage
 // Function to clear previous search results
 const clearResults = () => {
   while (Container.firstChild) {
@@ -25,21 +28,25 @@ const createListItem = (title, image, description, link) => {
   listItem.classList.add("list-item");
   listItem.classList.add("searchr");
 
+
   const listItemContent = document.createElement("a");
   listItemContent.href = link;
   listItemContent.target = "_blank"; // Open link in a new tab
   listItemContent.rel = "noopener noreferrer"; // Set recommended security attributes
 
   const titleElement = document.createElement("h3");
-  titleElement.classList.add("center");
   titleElement.textContent = title;
 
+  const linkElement = document.createElement("p1");
+  linkElement.innerHTML = link;
+
   const descriptionElement = document.createElement("p");
-  descriptionElement.classList.add("center");
   descriptionElement.innerHTML = description;
+
 
   listItemContent.appendChild(titleElement);
   listItemContent.appendChild(descriptionElement);
+    listItem.appendChild(linkElement)
   listItem.appendChild(listItemContent);
 
   return listItem;
@@ -60,6 +67,7 @@ const performSearch = () => {
   fetch(duckDuckGoUrl)
     .then((response) => response.json())
     .then((duckDuckGoData) => {
+      updatePaginationButtons();
       if (duckDuckGoData.Abstract) {
         const wikiUrl = duckDuckGoData.AbstractURL;
         const abstract = duckDuckGoData.Abstract;
@@ -96,7 +104,7 @@ const performSearch = () => {
 
 
   // Fetch search results from the additional search engine API
-  const searchurl = `${searchEngineApiUrl}${query}?numOfPages=1`;
+  const searchurl = `${searchEngineApiUrl}${query}?numOfPages=${currentPage}`;
   fetch(searchurl, {
     method: "GET",
     headers: {
@@ -106,6 +114,7 @@ const performSearch = () => {
   })
     .then((response) => response.json())
     .then((data) => {
+      updatePaginationButtons();
       if (data.error) {
         Container.textContent = data.error;
       } else {
@@ -124,6 +133,31 @@ const performSearch = () => {
       console.error(error);
     });
 };
+
+function updatePaginationButtons() {
+    pagenum.innerHTML = `Page number : ${currentPage}`
+    if (currentPage === 1) {
+        previousButton.disabled = true;
+    } else {
+        previousButton.disabled = false;
+    }
+
+    if (currentPage === 3) {
+        nextButton.disabled = true;
+    } else {
+        nextButton.disabled = false;
+    }
+}
+
+previousButton.addEventListener("click", () => {
+    currentPage--;
+    performSearch();
+});
+
+nextButton.addEventListener("click", () => {
+    currentPage++;
+    performSearch();
+});
 
 // ...
 const handleKeyPress = (event) => {

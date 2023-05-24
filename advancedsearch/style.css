@@ -120,20 +120,52 @@ a{
 }
 .list-item {
   margin-bottom: 10px;
+  padding: 10px;
 }
 p.center {
   white-space: pre-line;
 }
 .duckduckgo{
-  background-color: #56564f;
-  color: rgb(200, 190, 190);
-  margin: 15px;
-  padding: 10px;
-  border-radius: 5px;
+    background-color: rgba(17, 25, 40, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125)
 }
 .wikipedia{
   background-color: #211f1f;
 }
 .searchr{
   background-color: #020000;
+}
+p1{
+  color: rgb(49, 182, 49);
+}
+.navbtnn{
+    padding: 10px 20px;
+    margin-left: 10px;
+    background: #44474a;
+    color: #ccc;
+    border-radius: 5px;
+    margin: 0;
+  position: absolute;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(10%, -0%);
+}
+.navbtnp{
+    padding: 10px 20px;
+    margin-left: 10px;
+    background: #44474a;
+    color: #ccc;
+    border-radius: 5px;
+    margin: 0;
+  position: relative;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-100%, -0%);
+}
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
 }
