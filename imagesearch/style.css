@@ -23,6 +23,7 @@ body{
 #search-button {
     padding: 10px 20px;
     margin-left: 10px;
+    cursor: pointer;
 }
 
 #search-results {
@@ -129,10 +130,17 @@ a{
 }
 
 .gallery-image {
+
     width: 200px;
     height: 200px;
     object-fit: cover;
     margin: 10px;
+    background-color: #211f1f;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.gallery-image::hover{
+  cursor: pointer;
 }
 .navbtnn{
     padding: 10px 20px;
@@ -141,6 +149,7 @@ a{
     color: #ccc;
     border-radius: 5px;
     margin: 0;
+    cursor: pointer;
   position: absolute;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
@@ -148,6 +157,7 @@ a{
 }
 .navbtnp{
     padding: 10px 20px;
+    cursor: pointer;
     margin-left: 10px;
     background: #44474a;
     color: #ccc;
