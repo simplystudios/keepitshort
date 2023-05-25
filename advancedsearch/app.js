@@ -90,11 +90,15 @@ const performSearch = () => {
         const excerpt = document.createElement("p");
         excerpt.classList.add("center");
         excerpt.textContent = abstract;
+        
+        const thum = document.createElement("img");
+        thum.innerHTML = image;
 
 
         listItemContent.appendChild(title);
         listItemContent.appendChild(excerpt);
         listItem.appendChild(listItemContent);
+        listItem.appendChild(thum)
         Container.appendChild(listItem);
       }
     })

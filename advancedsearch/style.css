@@ -125,11 +125,31 @@ a{
 p.center {
   white-space: pre-line;
 }
-.duckduckgo{
-    background-color: rgba(17, 25, 40, 0.75);
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.125)
+.duckduckgo {
+  background-color: #211f1f;
+  border-radius: 12px;
+  border: 1px solid #0074D9;
+  width: relative;
+  text-align: center;
+  margin: 0 auto;
+  float: none;
+  margin-bottom: 10px;
 }
+
+.duckduckgo h2 {
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.duckduckgo p {
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.duckduckgo img {
+  max-width: 100%;
+}
+
 .wikipedia{
   background-color: #211f1f;
 }
